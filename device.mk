@@ -376,6 +376,7 @@ PRODUCT_PACKAGES += \
     factory_init.connectivity.rc \
     factory_init.project.rc \
     factory_init.rc \
+    init.logcat.rc \
     init.ago.rc \
     init.connectivity.rc \
     init.mi_thermald.rc \
