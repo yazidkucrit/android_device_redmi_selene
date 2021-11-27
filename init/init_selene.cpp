@@ -122,28 +122,10 @@ void vendor_load_properties()
     struct sysinfo sys;
     sysinfo(&sys);
     
-    if (hwname.rfind("merlin", 0) == 0) {
-    if (region == "CN") {
-        model = "Redmi 10X 4G";
-    } else {
-        model = "Redmi Note 9";
+    if (hwname.rfind("selene", 0) == 0) {
+        model = "Redmi 10";
+        device = hwname.rfind("eos", 0) == 0 ? "eos" : "selene";
     }
-        device = hwname.rfind("merlinnfc", 0) == 0 ? "merlinnfc" : "merlin";
-    } else {
-    //hey, it's shiva!
-    if (sys.totalram > 5072ull * 1024 * 1024 && region != "CN") {
-        device = "shiva";
-        model = "POCO M2";
-        brand = "POCO";
-        property_override("ro.build.description", "shiva-user 10 QP1A.190711.020 release-keys");
-        property_override_triple("ro.build.fingerprint", "ro.system.build.fingerprint", "ro.vendor.build.fingerprint", "POCO/shiva/shiva:10/QP1A.190711.020/V12.0.1.0.QJCINXM:user/release-keys");
-    } else if (hwname == "galahad") {
-        device = "galahad";
-        model = "Redmi 9";
-    } else {
-        device = "lancelot";
-        model = (region == "CN" ? "Redmi 9 Prime" : "Redmi 9"); }
-	}
     // Override all partitions' props
     string prop_partitions[] = { "", "odm.", "product.", "system.", "system_ext.", "vendor." };
     for (const string &prop : prop_partitions) {

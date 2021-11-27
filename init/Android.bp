@@ -14,9 +14,9 @@
 // limitations under the License.
 //
 cc_library_static {
-    name: "libinit_mt6768",
+    name: "libinit_selene",
     recovery_available: true,
-    srcs: ["init_mt6768.cpp"],
+    srcs: ["init_selene.cpp"],
     whole_static_libs: ["libbase"],
     header_libs: [
         "libbase_headers",

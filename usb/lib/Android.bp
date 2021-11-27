@@ -15,7 +15,7 @@
  */
 
 cc_library_static {
-    name: "libusbconfigfs_mt6768",
+    name: "libusbconfigfs_selene",
     vendor_available: true,
     export_include_dirs: ["include"],
 

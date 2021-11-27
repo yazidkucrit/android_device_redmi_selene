@@ -15,10 +15,10 @@
 cc_binary {
     relative_install_path: "hw",
     defaults: ["hidl_defaults"],
-    name: "android.hardware.light@2.0-service.mt6768",
+    name: "android.hardware.light@2.0-service.selene",
     proprietary: true,
-    init_rc: ["android.hardware.light@2.0-service.mt6768.rc"],
-    vintf_fragments: ["android.hardware.light@2.0-service.mt6768.xml"],
+    init_rc: ["android.hardware.light@2.0-service.selene.rc"],
+    vintf_fragments: ["android.hardware.light@2.0-service.selene.xml"],
     srcs: ["service.cpp", "Light.cpp"],
     shared_libs: [
         "libhardware",

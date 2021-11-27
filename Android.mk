@@ -16,7 +16,7 @@
 
 LOCAL_PATH := $(call my-dir)
 
-ifneq ($(filter merlin merlinx lava,$(TARGET_DEVICE)),)
+ifeq ($(TARGET_DEVICE),selene)
 include $(call all-makefiles-under,$(LOCAL_PATH))
 include $(CLEAR_VARS)
 
