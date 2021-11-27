@@ -188,6 +188,12 @@ on post-fs
     
     
 
+# Support A/B feature for EMMC and UFS boot region
+    symlink /dev/block/sda /dev/block/mmcblk0boot0
+    symlink /dev/block/sdb /dev/block/mmcblk0boot1
+    symlink /dev/block/mmcblk0boot0 /dev/block/platform/bootdevice/by-name/preloader_a
+    symlink /dev/block/mmcblk0boot1 /dev/block/platform/bootdevice/by-name/preloader_b
+
 on late-fs
     write /proc/bootprof "INIT:late-fs"
     wait_for_prop hwservicemanager.ready "true"
@@ -343,6 +349,8 @@ on post-fs-data
     #mknod /dev/M4U_device c 188 0
     chmod 0444 /dev/m4u
     #chown system media /dev/M4U_device
+    chmod 0644 /proc/m4u
+    chown system media /proc/m4u
 
     #set mlock limit to infinate (for m4u operation)
     setrlimit 8 -1 -1
@@ -369,6 +377,11 @@ on post-fs-data
     chown audioserver audio /sys/bus/platform/devices/rt5509_param.0/prop_param
     chown audioserver audio /sys/bus/platform/devices/rt5509_param.1/prop_param
     chown audioserver audio /sys/bus/platform/devices/mt6660-param.0/prop_params
+
+    chown audioserver audio /sys/bus/i2c/devices/6-0058/actflag
+    chown audioserver audio /sys/bus/i2c/devices/6-0058/vmax
+    chmod 0660 /sys/bus/i2c/devices/6-0058/actflag
+    chmod 0660 /sys/bus/i2c/devices/6-0058/vmax
 
     #AAudio Boost
     write /dev/stune/rt/schedtune.boost 30
@@ -406,7 +419,8 @@ on post-fs-data
     #Runin Charge Control
     chmod 0777 /sys/class/power_supply/battery/input_suspend
     chown system system /sys/class/power_supply/battery/input_suspend
-    
+    chmod 0777 /sys/class/power_supply/battery/hiz_enable
+    chown system system /sys/class/power_supply/battery/hiz_enable
 
     # PMIC property
     chown radio system /sys/devices/platform/mt-pmic/low_battery_protect_stop
@@ -710,6 +724,8 @@ on boot
     stop console
     
     write /proc/bootprof "INIT:boot"
+
+    setprop debug.sf.vsync_reactor 0
 
     write /proc/sys/vm/dirty_writeback_centisecs 300
     chmod 0660 /sys/power/autosleep
@@ -1042,6 +1058,8 @@ service meta_tst /vendor/bin/meta_tst
     disabled
     oneshot
 
+on property:sys.boot_completed=1 && property:ro.boot.atm=enable
+    start meta_tst
 
 service initprop_bin /system/vendor/bin/initprop_bin
     class main
@@ -1201,12 +1219,9 @@ service vendor.nfc_hal_service /vendor/bin/hw/android.hardware.nfc@1.2-service
     group nfc
     disabled
 
-on property:ro.boot.product.hardware.sku=merlinnfc
+on property:ro.boot.product.hardware.sku=eos
     start vendor.nfc_hal_service
     
-on property:ro.boot.product.hardware.sku=galahad
-    start vendor.nfc_hal_service
-
 on property:persist.sys.MT6768.dt2w=0
     exec - system input -- /vendor/bin/dt2w_event 4
 

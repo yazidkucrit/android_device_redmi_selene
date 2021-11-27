@@ -155,10 +155,12 @@ on post-fs-data
     chmod 0660 /sys/class/sensor/m_situ_misc/situdelay
     chmod 0660 /sys/class/sensor/m_situ_misc/situbatch
     chmod 0660 /sys/class/sensor/m_situ_misc/situflush
+    chmod 0660 /sys/class/sensor/m_situ_misc/sarcali_update
     chown system system /sys/class/sensor/m_situ_misc/situactive
     chown system system /sys/class/sensor/m_situ_misc/situdelay
     chown system system /sys/class/sensor/m_situ_misc/situbatch
     chown system system /sys/class/sensor/m_situ_misc/situflush
+    chown system system /sys/class/sensor/m_situ_misc/sarcali_update
 
     chmod 0660 /sys/class/sensor/m_act_misc/actactive
     chmod 0660 /sys/class/sensor/m_act_misc/actdelay

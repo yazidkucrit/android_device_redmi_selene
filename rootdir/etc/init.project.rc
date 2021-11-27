@@ -7,6 +7,9 @@ on init
     mkdir /mnt/media_rw/usbotg 0700 media_rw media_rw
     mkdir /storage/usbotg 0700 root root
 
+    mount ext4 /dev/block/platform/bootdevice/by-name/rescue /mnt/rescue noatime
+    restorecon_recursive /mnt/rescue
+
 on post-fs-data
 mkdir /data/vendor/nfc 0770 nfc nfc
 mkdir /data/vendor/secure_element 0770 nfc nfc
@@ -39,51 +42,61 @@ mkdir /data/vendor/secure_element 0770 nfc nfc
 
     chmod 0660 /dev/spm
     chown system system /dev/spm
+#dual calib
+    chmod 0777 /mnt/vendor/persist/camera/rear_dc_cal_wd.bin
+    chmod 0777 /data/vendor/camera/rear_dc_cal_wd.bin
+    #K19A add by lienci at 2021/6/11
+    restorecon /mnt/vendor/persist/camera/rear_dc_cal_wd.bin
 
 #XIAOMI_AI_ASD
     mkdir /data/misc/camera 0777 system camera
     mkdir /data/vendor/camera 0777 system camera
-    copy  /vendor/etc/camera/merlin_goldResult.bin /data/vendor/camera/merlin_goldResult.bin
-    chown system system /data/vendor/camera/merlin_goldResult.bin
-    chmod 0777 /data/vendor/camera/merlin_goldResult.bin
     chmod 0660 /dev/nq-nci
     chown nfc nfc /dev/nq-nci
     chmod 0660 /dev/p73
     chown nfc nfc /dev/p73
+
+# for intsense_k19a bokeh use
+    chown system system /data/vendor/camera/com.xiaomi.dcal.wd.data
+    chmod 0777 /data/vendor/camera/com.xiaomi.dcal.wd.data
     mkdir /data/vendor/camera/model 0777 system camera
+    mkdir /data/vendor/camera/model/dof_model 0777 system camera
     mkdir /data/vendor/camera/model/rt_model 0777 system camera
-    mkdir /data/vendor/camera/model/rt_model/mask 0777 system camera
-    mkdir /data/vendor/camera/model/rt_model/score 0777 system camera
-    mkdir /data/vendor/camera/model/bokeh_model 0777 system camera
-    copy /vendor/etc/camera/model/rt_model/mask/cache_data /data/vendor/camera/model/rt_model/mask/cache_data
-    chmod 0777 /data/vendor/camera/model/rt_model/mask/cache_data
-    copy /vendor/etc/camera/model/rt_model/mask/model_mdl_cache /data/vendor/camera/model/rt_model/mask/model_mdl_cache
-    chmod 0777 /data/vendor/camera/model/rt_model/mask/model_mdl_cache
-    copy /vendor/etc/camera/model/rt_model/mask/segment_model /data/vendor/camera/model/rt_model/mask/segment_model
-    chmod 0777 /data/vendor/camera/model/rt_model/mask/segment_model
-    copy /vendor/etc/camera/model/rt_model/score/cache_data /data/vendor/camera/model/rt_model/score/cache_data
-    chmod 0777 /data/vendor/camera/model/rt_model/score/cache_data
-    copy /vendor/etc/camera/model/rt_model/score/model_mdl_cache /data/vendor/camera/model/rt_model/score/model_mdl_cache
-    chmod 0777 /data/vendor/camera/model/rt_model/score/model_mdl_cache
-    copy /vendor/etc/camera/model/rt_model/score/segment_model /data/vendor/camera/model/rt_model/score/segment_model
-    chmod 0777 /data/vendor/camera/model/rt_model/score/segment_model
-    copy /vendor/etc/camera/model/bokeh_model/cache_data /data/vendor/camera/model/bokeh_model/cache_data
-    chmod 0777 /data/vendor/camera/model/bokeh_model/cache_data
-    copy /vendor/etc/camera/model/bokeh_model/model_mdl_cache /data/vendor/camera/model/bokeh_model/model_mdl_cache
-    chmod 0777 /data/vendor/camera/model/bokeh_model/model_mdl_cache
-    copy /vendor/etc/camera/model/bokeh_model/segment_model /data/vendor/camera/model/bokeh_model/segment_model
-    chmod 0777 /data/vendor/camera/model/bokeh_model/segment_model
+    copy /vendor/etc/camera/model/dof_model/capture_model /data/vendor/camera/model/dof_model/capture_model
+    copy /vendor/etc/camera/model/dof_model/capture_cache /data/vendor/camera/model/dof_model/capture_cache
+    copy /vendor/etc/camera/model/dof_model/capture_policy /data/vendor/camera/model/dof_model/capture_policy
+    copy /vendor/etc/camera/model/rt_model/preview_cache /data/vendor/camera/model/rt_model/preview_cache
+    copy /vendor/etc/camera/model/rt_model/preview_model /data/vendor/camera/model/rt_model/preview_model
+    copy /vendor/etc/camera/model/rt_model/preview_policy /data/vendor/camera/model/rt_model/preview_policy
+    chmod 0666 /data/vendor/camera/model/dof_model/capture_model
+    chmod 0666 /data/vendor/camera/model/dof_model/capture_cache
+    chmod 0666 /data/vendor/camera/model/dof_model/capture_policy
+    chmod 0666 /data/vendor/camera/model/rt_model/preview_cache
+    chmod 0666 /data/vendor/camera/model/rt_model/preview_model
+    chmod 0666 /data/vendor/camera/model/rt_model/preview_policy
 
 #XIAOMI_WATERMARK
     mkdir /vendor/etc/camera 0777 system camera
 
-#DUAL_CAM
+#dual calib
+    #K19A code to modify calib by lienci at 2021/5/25 start
+    mkdir /mnt/vendor/persist 0777 system camera
     mkdir /mnt/vendor/persist/camera 0777 system camera
-    chown system system /mnt/vendor/persist/camera/mi_calib_2k_output.bin
-    chmod 0777 /mnt/vendor/persist/camera/mi_calib_2k_output.bin
-    chown system system /mnt/vendor/persist/camera/rear_dc_cal_wd.bin
+    chmod 0777 /vendor/etc/camera/com.xiaomi.dcal.wd.golden
+    #K19A code to modify calib by lienci at 2021/5/25 end
+    chmod 0777 /mnt/vendor/persist/camera/rear_dc_cal_wt.bin
     chmod 0777 /mnt/vendor/persist/camera/rear_dc_cal_wd.bin
-
+    chmod 0777 /vendor/etc/camera/golden_ov13b10_i_ov2180_i.bin
+    chmod 0777 /vendor/etc/camera/golden_ov13b10_i_ov2180_ii.bin
+    chmod 0777 /vendor/etc/camera/golden_ov13b10_ii_ov2180_i.bin
+    chmod 0777 /vendor/etc/camera/golden_ov13b10_ii_ov2180_ii.bin
+    chmod 0777 /data/vendor/camera/golden_rear_dc_cal_wt.bin
+    chmod 0777 /data/vendor/camera/rear_dc_cal_wd.bin
+    chmod 0777 /data/vendor/camera/golden_s5k3l6_ii_ov2180_ii.bin
+    #modify sar Authority  by luozeng at 2021.3.30 start
+    chmod 0444  /sys/class/sensor/architecture
+    chmod 0666  /dev/sar
+    #modify sar Authority  by luozeng at 2021.3.30 end
 on init
     # Refer to http://source.android.com/devices/tech/storage/index.html
     # It said, "Starting in Android 4.4, multiple external storage devices are surfaced to developers through
@@ -98,20 +111,46 @@ service fuse_usbotg /system/bin/sdcard -u 1023 -g 1023 -w 1023 -d /mnt/media_rw/
     class late_start
     disabled
 
-service mmc_ffu /vendor/bin/mmc_ffu do /vendor/bin/emmc.bin /dev/block/mmcblk0 15 03 00
+service mmc_ffu /vendor/bin/mmc_ffu do /vendor/bin/KMDD60018M-B320_P09.bin /dev/block/mmcblk0 15 09 02
 	class main
 	user root
 	group system
 	oneshot
 
-service service_nv_protect /vendor/bin/misc_writer --nv_protect
-    disabled
-    oneshot
+service mmc_ffu_hynix /vendor/bin/mmc_ffu_hynix do /vendor/bin/H9HP16AECMMDAR-KMM_P08.bin /dev/block/mmcblk0 90 38303030 35303030
+	class main
+	user root
+	group system
+	oneshot
 
-on property:ctl.vendor.service_nv_protect=start
-    start service_nv_protect
+service mmc_ffu_micron /vendor/bin/mmc_ffu_micron do /vendor/bin/Turquoise_FW_Version_0x0203.BIN /dev/block/mmcblk0 13 00000203 00000001
+	class main
+	user root
+	group system
+	oneshot
+
+# for bokeh control
+on property:vendor.camera.bokeh.disable=1
+    setprop vendor.camera.bokeh 1
+
+on property:vendor.camera.bokeh.disable=0
+    setprop vendor.camera.bokeh 0
 
 on boot
     setprop vendor.debug.camera.enableMetaPending 0
     setprop vendor.debug.camera.enableMetaMerge 0
+    
+#finggerprint
+    chown system system /dev/goodix_fp
+    chmod 0644 /dev/goodix_fp
+    chown system system /sys/bus/platform/devices/fingerprint/clk_enable
+    chmod 0660 /sys/bus/platform/devices/fingerprint/clk_enable
+    chown system /sys/bus/platform/devices/fingerprint/irq
+    chmod 0660 /sys/bus/platform/devices/fingerprint/irq
+    chown system system /sys/bus/platform/devices/fingerprint/hw_reset
+    chmod 0660 /sys/bus/platform/devices/fingerprint/hw_reset
+    chown system system /sys/bus/platform/devices/fingerprint/wakeup_enable
+    chmod 0660 /sys/bus/platform/devices/fingerprint/wakeup_enable
+    chown system system /sys/bus/platform/devices/fingerprint/fingerdown_wait
+    chmod 0660 /sys/bus/platform/devices/fingerprint/fingerdown_wait
 
