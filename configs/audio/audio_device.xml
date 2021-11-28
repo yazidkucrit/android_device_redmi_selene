@@ -14,8 +14,6 @@
         <kctl name="ASP TX2 Source" value="DSPTX1" />
         <kctl name="ASPTX Ref" value="Ref" />
         <kctl name="PCM Soft Ramp" value="4ms" />
-        <kctl name="AMP Fast Use Case Delta File" value="fast_switch1.txt" />
-        <kctl name="AMP Fast Use Case Switch Enable" value="0" />
         <!--headphone output-->
         <path name="headphone_output" value="turnon">
             <kctl name="DAC In Mux" value="Normal Path" />
@@ -33,26 +31,41 @@
         <path name="HP_IMPEDANCE" value="turnoff">
             <kctl name="HPL Mux" value="Open" />
         </path>
+        <!--K19A code for K19A-191 by zhangpeng at 2021/4/28 start-->
         <!--receiver output-->
         <path name="receiver_output" value="turnon">
+            <kctl name="RCV_AMP_MODE" value="RECIEVER_MODE" />
             <kctl name="DAC In Mux" value="Normal Path" />
             <kctl name="RCV Mux" value="Voice Playback" />
+            <kctl name="Ext_Reciver_Amp Switch" value="1" />
         </path>
         <path name="receiver_output" value="turnoff">
             <kctl name="RCV Mux" value="Open" />
+            <kctl name="Ext_Reciver_Amp Switch" value="0" />
+            <kctl name="RCV_AMP_MODE" value="SPEAKER_MODE" />
         </path>
+        <!--K19A code for K19A-191 by zhangpeng at 2021/4/28 end-->
        <!-- 2-in-1 speaker output-->
         <path name="two_in_one_speaker_output" value="turnon">
+            <kctl name="RCV_AMP_MODE" value="RECIEVER_MODE" />
+            <kctl name="DAC In Mux" value="Normal Path" />
+            <kctl name="RCV Mux" value="Voice Playback" />
+            <kctl name="Ext_Reciver_Amp Switch" value="1" />
         </path>
         <path name="two_in_one_speaker_output" value="turnoff">
+            <kctl name="RCV Mux" value="Open" />
+            <kctl name="Ext_Reciver_Amp Switch" value="0" />
+            <kctl name="RCV_AMP_MODE" value="SPEAKER_MODE" />
         </path>
        <!--speaker output-->
         <path name="speaker_output" value="turnon">
             <kctl name="DAC In Mux" value="Normal Path" />
             <kctl name="LOL Mux" value="Playback" />
+            <kctl name="RCV Mux" value="Voice Playback" />
         </path>
         <path name="speaker_output" value="turnoff">
             <kctl name="LOL Mux" value="Open" />
+            <kctl name="RCV Mux" value="Open" />
         </path>
         <!--headhpone_speaker output-->
         <path name="headphoneSpeaker_output" value="turnon">
@@ -63,14 +76,37 @@
         <path name="headphoneSpeaker_output" value="turnoff">
             <kctl name="HPL Mux" value="Open" />
             <kctl name="HPR Mux" value="Open" />
+            <kctl name="LOL Mux" value="Open" />
         </path>
         <!--external_speaker output-->
         <path name="ext_speaker_output" value="turnon">
             <kctl name="Ext_Speaker_Amp Switch" value="1" />
+            <kctl name="Ext_Reciver_Amp Switch" value="1" />
         </path>
         <path name="ext_speaker_output" value="turnoff">
             <kctl name="Ext_Speaker_Amp Switch" value="0" />
+            <kctl name="Ext_Reciver_Amp Switch" value="0" />
         </path>
+        <!--K19A code for HQ-127346 by zhangpeng at 2021/4/9 start-->
+        <!--external_speaker output left-->
+        <path name="ext_speaker_output_left" value="turnon">
+            <kctl name="Ext_Speaker_Amp Switch" value="0" />
+            <kctl name="Ext_Reciver_Amp Switch" value="1" />
+        </path>
+        <path name="ext_speaker_output_left" value="turnoff">
+            <kctl name="Ext_Speaker_Amp Switch" value="0" />
+            <kctl name="Ext_Reciver_Amp Switch" value="0" />
+        </path>
+        <!--external_speaker output right-->
+        <path name="ext_speaker_output_right" value="turnon">
+            <kctl name="Ext_Speaker_Amp Switch" value="1" />
+            <kctl name="Ext_Reciver_Amp Switch" value="0" />
+        </path>
+        <path name="ext_speaker_output_right" value="turnoff">
+            <kctl name="Ext_Speaker_Amp Switch" value="0" />
+            <kctl name="Ext_Reciver_Amp Switch" value="0" />
+        </path>
+        <!--K19A code for HQ-127346 by zhangpeng at 2021/4/9 end-->
         <!--mic setting-->
         <path name="builtin_Mic_Mic1" value="turnon">
             <kctl name="ADC L Mux" value="Left Preamplifier" />
