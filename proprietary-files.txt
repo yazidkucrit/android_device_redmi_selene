@@ -65,6 +65,10 @@ vendor/lib64/libbluetooth_relayer.so
 vendor/lib64/libbt-vendor.so
 vendor/lib64/vendor.mediatek.hardware.bluetooth.audio@2.1.so
 
+# Boot control
+vendor/lib/hw/android.hardware.boot@1.0-impl-1.1-mtkimpl.so
+vendor/lib64/hw/android.hardware.boot@1.0-impl-1.1-mtkimpl.so
+
 # Camera
 vendor/etc/camera/mibokeh_mt6853_opencl.bin
 vendor/etc/camera/mibokeh_mt6853_parameter.bin
