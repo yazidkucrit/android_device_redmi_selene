@@ -161,6 +161,7 @@ vendor/bin/hw/camerahalserver
 # Camera-configs
 vendor/etc/camera/CFR_para_UW.bin
 vendor/etc/camera/com.xiaomi.dcal.wd.golden
+vendor/etc/camera/com.xiaomi.dcal.wu.golden
 vendor/etc/camera/fonts.xml
 vendor/etc/camera/golden_rear_dc_cal_wd.bin
 vendor/etc/camera/hdrcheckerparamsettings.yml
@@ -934,6 +935,7 @@ vendor/bin/epdg_wod
 vendor/bin/factory
 vendor/bin/factory_bin
 vendor/bin/FFU_FW_HW_M.1.B.BIN
+vendor/bin/FFU_M5_11.BIN
 vendor/bin/fuelgauged
 vendor/bin/fuelgauged_nvram
 vendor/bin/gsm0710muxd
@@ -998,7 +1000,6 @@ vendor/bin/starter
 vendor/bin/stp_dump3
 vendor/bin/stroke
 vendor/bin/teei_daemon
-vendor/bin/Turquoise_FW_Version_0x0203.BIN
 vendor/bin/Vincent_V4_MLC_64GB_Bridge_P08.bin
 vendor/bin/Vincent_V4_MLC_64GB_P02_Gen.bin
 vendor/bin/Vincent_V4_TLC_128GB_Bridge_P03.bin
@@ -1014,7 +1015,6 @@ vendor/bin/wfca
 vendor/bin/wlan_assistant
 vendor/bin/wmt_launcher
 vendor/bin/wmt_loader
-vendor/data/misc/pdc.txt
 vendor/data/misc/ProjectConfig.mk
 vendor/etc/apdb/APDB_MT6768_S01__W2110
 vendor/etc/apdb/APDB_MT6768_S01__W2110_ENUM
@@ -1318,10 +1318,13 @@ vendor/lib/libavservices_minijail.so
 vendor/lib/libbessound_hd_mtk_vendor.so
 vendor/lib/libblisrc32_vendor.so
 vendor/lib/libbwc.so
+vendor/lib/libcapctrl.so
 vendor/lib/libcares_naptr.so
 vendor/lib/libcarrierconfig.so
 vendor/lib/libccci_util.so
 vendor/lib/libcheckpid.so
+vendor/lib/libcrypto-mdapp.so
+vendor/lib/libcurl-md.so
 vendor/lib/libcurl_xcap_md.so
 vendor/lib/libcustom_nvram.so
 vendor/lib/libcvsd_mtk.so
@@ -1387,6 +1390,7 @@ vendor/lib/librgbwlightsensor.so
 vendor/lib/librpc.so
 vendor/lib/libspeechparser_vendor.so
 vendor/lib/libspeech_enh_lib.so
+vendor/lib/libssl-mdapp.so
 vendor/lib/libstorage_otp.so
 vendor/lib/libsysenv.so
 vendor/lib/libteeclientjni.so
@@ -1437,10 +1441,14 @@ vendor/lib64/gc02m1_macro_sy_mipi_raw_india_tuning.so
 vendor/lib64/gc02m1_macro_sy_mipi_raw_tuning.so
 vendor/lib64/hw/dfps.mt6768.so
 vendor/lib64/hw/kmsetkey.beanpod.so
+vendor/lib64/imx355_aac_ultra_mipi_raw_cn_IdxMgr.so
+vendor/lib64/imx355_aac_ultra_mipi_raw_cn_tuning.so
 vendor/lib64/imx355_aac_ultra_mipi_raw_IdxMgr.so
 vendor/lib64/imx355_aac_ultra_mipi_raw_india_IdxMgr.so
 vendor/lib64/imx355_aac_ultra_mipi_raw_india_tuning.so
 vendor/lib64/imx355_aac_ultra_mipi_raw_tuning.so
+vendor/lib64/imx355_sunny_ultra_mipi_raw_cn_IdxMgr.so
+vendor/lib64/imx355_sunny_ultra_mipi_raw_cn_tuning.so
 vendor/lib64/imx355_sunny_ultra_mipi_raw_IdxMgr.so
 vendor/lib64/imx355_sunny_ultra_mipi_raw_india_IdxMgr.so
 vendor/lib64/imx355_sunny_ultra_mipi_raw_india_tuning.so
@@ -1486,6 +1494,8 @@ vendor/lib64/libcarrierconfig.so
 vendor/lib64/libccci_util.so
 vendor/lib64/libcharon-ss.so
 vendor/lib64/libcheckpid.so
+vendor/lib64/libcrypto-mdapp.so
+vendor/lib64/libcurl-md.so
 vendor/lib64/libcurl_xcap_md.so
 vendor/lib64/libcustom_nvram.so
 vendor/lib64/libcvsd_mtk.so
@@ -1613,6 +1623,8 @@ vendor/lib64/ov50c40_ofilm_main_mipi_raw_IdxMgr.so
 vendor/lib64/ov50c40_ofilm_main_mipi_raw_india_IdxMgr.so
 vendor/lib64/ov50c40_ofilm_main_mipi_raw_india_tuning.so
 vendor/lib64/ov50c40_ofilm_main_mipi_raw_tuning.so
+vendor/lib64/ov50c40_qtech_main_mipi_raw_cn_IdxMgr.so
+vendor/lib64/ov50c40_qtech_main_mipi_raw_cn_tuning.so
 vendor/lib64/ov50c40_qtech_main_mipi_raw_IdxMgr.so
 vendor/lib64/ov50c40_qtech_main_mipi_raw_india_IdxMgr.so
 vendor/lib64/ov50c40_qtech_main_mipi_raw_india_tuning.so
@@ -1625,6 +1637,8 @@ vendor/lib64/ov8856_ofilm_front_mipi_raw_IdxMgr.so
 vendor/lib64/ov8856_ofilm_front_mipi_raw_india_IdxMgr.so
 vendor/lib64/ov8856_ofilm_front_mipi_raw_india_tuning.so
 vendor/lib64/ov8856_ofilm_front_mipi_raw_tuning.so
+vendor/lib64/s5kjn1_ofilm_main_mipi_raw_cn_IdxMgr.so
+vendor/lib64/s5kjn1_ofilm_main_mipi_raw_cn_tuning.so
 vendor/lib64/s5kjn1_ofilm_main_mipi_raw_IdxMgr.so
 vendor/lib64/s5kjn1_ofilm_main_mipi_raw_india_IdxMgr.so
 vendor/lib64/s5kjn1_ofilm_main_mipi_raw_india_tuning.so
