@@ -44,9 +44,12 @@ mkdir /data/vendor/secure_element 0770 nfc nfc
     chown system system /dev/spm
 #dual calib
     chmod 0777 /mnt/vendor/persist/camera/rear_dc_cal_wd.bin
+    chmod 0777 /mnt/vendor/persist/camera/rear_dc_cal_wu.bin
     chmod 0777 /data/vendor/camera/rear_dc_cal_wd.bin
+    chmod 0777 /data/vendor/camera/rear_dc_cal_wu.bin
     #K19A add by lienci at 2021/6/11
     restorecon /mnt/vendor/persist/camera/rear_dc_cal_wd.bin
+    restorecon /mnt/vendor/persist/camera/rear_dc_cal_wu.bin
 
 #XIAOMI_AI_ASD
     mkdir /data/misc/camera 0777 system camera
@@ -58,7 +61,9 @@ mkdir /data/vendor/secure_element 0770 nfc nfc
 
 # for intsense_k19a bokeh use
     chown system system /data/vendor/camera/com.xiaomi.dcal.wd.data
+    chown system system /data/vendor/camera/com.xiaomi.dcal.wu.data
     chmod 0777 /data/vendor/camera/com.xiaomi.dcal.wd.data
+    chmod 0777 /data/vendor/camera/com.xiaomi.dcal.wu.data
     mkdir /data/vendor/camera/model 0777 system camera
     mkdir /data/vendor/camera/model/dof_model 0777 system camera
     mkdir /data/vendor/camera/model/rt_model 0777 system camera
@@ -83,15 +88,18 @@ mkdir /data/vendor/secure_element 0770 nfc nfc
     mkdir /mnt/vendor/persist 0777 system camera
     mkdir /mnt/vendor/persist/camera 0777 system camera
     chmod 0777 /vendor/etc/camera/com.xiaomi.dcal.wd.golden
+    chmod 0777 /vendor/etc/camera/com.xiaomi.dcal.wu.golden
     #K19A code to modify calib by lienci at 2021/5/25 end
     chmod 0777 /mnt/vendor/persist/camera/rear_dc_cal_wt.bin
     chmod 0777 /mnt/vendor/persist/camera/rear_dc_cal_wd.bin
+    chmod 0777 /mnt/vendor/persist/camera/rear_dc_cal_wu.bin
     chmod 0777 /vendor/etc/camera/golden_ov13b10_i_ov2180_i.bin
     chmod 0777 /vendor/etc/camera/golden_ov13b10_i_ov2180_ii.bin
     chmod 0777 /vendor/etc/camera/golden_ov13b10_ii_ov2180_i.bin
     chmod 0777 /vendor/etc/camera/golden_ov13b10_ii_ov2180_ii.bin
     chmod 0777 /data/vendor/camera/golden_rear_dc_cal_wt.bin
     chmod 0777 /data/vendor/camera/rear_dc_cal_wd.bin
+    chmod 0777 /data/vendor/camera/rear_dc_cal_wu.bin
     chmod 0777 /data/vendor/camera/golden_s5k3l6_ii_ov2180_ii.bin
     #modify sar Authority  by luozeng at 2021.3.30 start
     chmod 0444  /sys/class/sensor/architecture
@@ -123,7 +131,7 @@ service mmc_ffu_hynix /vendor/bin/mmc_ffu_hynix do /vendor/bin/H9HP16AECMMDAR-KM
 	group system
 	oneshot
 
-service mmc_ffu_micron /vendor/bin/mmc_ffu_micron do /vendor/bin/Turquoise_FW_Version_0x0203.BIN /dev/block/mmcblk0 13 00000203 00000001
+service mmc_ffu_micron /vendor/bin/mmc_ffu_micron do /vendor/bin/FFU_M5_11.BIN /dev/block/mmcblk0 13 00000005 00000004
 	class main
 	user root
 	group system
