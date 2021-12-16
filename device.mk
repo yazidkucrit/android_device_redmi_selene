@@ -426,7 +426,7 @@ PRODUCT_PACKAGES += \
     
 # Light
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-service.selene
+    android.hardware.light-service.selene
 
 # NFC stack (AOSP)
 PRODUCT_COPY_FILES += \
