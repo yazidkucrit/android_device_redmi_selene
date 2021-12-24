@@ -444,6 +444,10 @@ PRODUCT_PACKAGES += \
     NfcNci \
     Tag
 
+# Libxml2
+PRODUCT_PACKAGES += \
+    libxml2.vendor
+
 # RcsService
 PRODUCT_PACKAGES += \
     RcsService
