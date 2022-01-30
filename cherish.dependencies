@@ -1,0 +1,26 @@
+[
+  {
+	"remote": "github",
+	"repository": "Redmi-MT6768/android_vendor_xiaomi_mt6768-ims",
+	"target_path": "vendor/xiaomi/mt6768-ims",
+	"branch": "twelve" 
+  },
+  {
+	"remote": "github",
+	"repository": "PixelExperience/device_mediatek_sepolicy_vndr",
+	"target_path": "device/mediatek/sepolicy_vndr",
+	"branch": "twelve"
+  },
+  {
+	"remote": "github",
+	"repository": "Luquidtester/android_vendor_xiaomi_selene",
+	"target_path": "vendor/xiaomi/selene",
+	"branch": "twelve"
+  },
+  {
+	"remote": "github",
+	"repository": "Luquidtester/kernel_xiaomi_selene",
+	"target_path": "kernel/xiaomi/selene",
+	"branch": "main"
+  }
+]
