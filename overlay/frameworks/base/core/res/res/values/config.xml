@@ -609,6 +609,10 @@
          specified name exists on the device, autofill will be disabled by default. -->
     <string name="config_defaultAutofillService" translatable="false">com.google.android.gms/.autofill.service.AutofillService</string>
     
+    <!-- Amount of time in ms the user needs to press the relevant keys to trigger the
+         screenshot chord -->
+    <integer name="config_screenshotChordKeyTimeout">0</integer>
+    
     <!-- List of comma separated package names for which we the system will not show crash, ANR,
     etc. dialogs. -->
     <string name="config_appsNotReportingCrashes">com.google.android.tts</string>
