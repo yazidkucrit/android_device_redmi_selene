@@ -373,6 +373,7 @@ persist.sys.sf.native_mode=0
 ro.vendor.mtk_embms_support=1
 debug.sf.disable_backpressure=1
 ro.config.media_vol_steps=25
+ro.config.vc_call_vol_steps=7
 persist.log.tag.libPowerHal=S
 persist.log.tag.GED=S
 persist.log.tag.hwcomposer=S
