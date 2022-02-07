@@ -22,4 +22,8 @@
 <resources>
     <!-- Camera 1 is the front camera on cannon -->
     <string translatable="false" name="config_protectedCameraId">1</string>
+    
+    <!-- If not zero, limits the internal screen recorder's framerate to the set value. -->
+    <integer name="config_screenRecorderMaxFramerate">60</integer>
+    
 </resources>
