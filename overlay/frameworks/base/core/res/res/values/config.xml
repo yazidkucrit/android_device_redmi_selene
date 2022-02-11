@@ -625,10 +625,6 @@
     <!-- Controls whether system buttons use all caps for text -->
     <bool name="config_buttonTextAllCaps">false</bool>
     
-    <!-- List of comma separated package names for which we the system will not show crash, ANR,
-    etc. dialogs. -->
-    <string name="config_appsNotReportingCrashes">com.google.android.tts</string>
-    
     <!-- The default value for transition animation scale found in developer settings.
          1.0 corresponds to 1x animator scale, 0 means that there will be no transition
          animations. Note that this is only a default and will be overridden by a
