@@ -429,7 +429,6 @@ persist.log.tag.MAPI-CommandProcessor=S
 ro.surface_flinger.primary_display_orientation=0
 ro.vendor.pref_scale_enable_cfg=1
 persist.vendor.md_c2k_cap_dep_check=0
-ro.apex.updatable=true
 ro.vendor.colorpick_adjust=true
 ro.vendor.all_modes.colorpick_adjust=true
 ro.vendor.cabc.enable=true
