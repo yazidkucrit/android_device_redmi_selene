@@ -484,7 +484,6 @@ PRODUCT_COPY_FILES += \
     $(DEVICE_PATH)/configs/wifi/wpa_supplicant_overlay.conf:$(TARGET_COPY_OUT_VENDOR)/etc/wifi/wpa_supplicant_overlay.conf
 
 PRODUCT_PACKAGES += \
-    NotchBarKiller \
     WifiOverlay \
     TetheringConfigOverlay \
     android.hardware.wifi@1.0 \
