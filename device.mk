@@ -116,7 +116,6 @@ PRODUCT_PACKAGES += \
 
 # Bluetooth
 PRODUCT_PACKAGES += \
-    libldacBT_dec \
     libbtconfigstore \
     libbluetooth_audio_session.vendor \
     android.hardware.bluetooth.a2dp@1.0 \
