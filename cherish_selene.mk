@@ -16,7 +16,7 @@
 
 # Boot animation
 TARGET_SCREEN_WIDTH := 1080
-TARGET_SCREEN_HEIGHT := 2340
+TARGET_SCREEN_HEIGHT := 2400
 
 # Inherit from selene device makefile
 $(call inherit-product, device/xiaomi/selene/device.mk)
