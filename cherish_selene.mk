@@ -49,10 +49,14 @@ PRODUCT_MANUFACTURER := xiaomi
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 TARGET_VENDOR := xiaomi
 TARGET_VENDOR_PRODUCT_NAME := selene
-PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="redfin-user 12 SP1A.211105.003 7757856 release-keys"
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRIVATE_BUILD_DESC="coral-user 12 SP2A.220305.012 8177914 release-keys"
 
 # Set BUILD_FINGERPRINT variable to be picked up by both system and vendor build.prop
-BUILD_FINGERPRINT := "google/redfin/redfin:12/SP1A.211105.003/7757856:user/release-keys"
+BUILD_FINGERPRINT := coral/coral:12/SP2A.220305.012/8177914:user/release-keys
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.build.fingerprint=$(BUILD_FINGERPRINT)
 
 # Cherish OS Stuffs
 WITH_GMS := true
