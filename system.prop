@@ -123,3 +123,7 @@ persist.log.tag.libnfc_nci=S
 persist.log.tag.libPowerHal=S
 persist.log.tag.mTEE=S
 persist.log.tag.mtkpower@impl=S
+
+# HWUI
+debug.hwui.use_hint_manager=true
+debug.hwui.target_cpu_time_percent=30
