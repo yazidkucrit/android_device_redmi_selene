@@ -115,3 +115,11 @@ ro.config.sdha_apps_bg_min=8
 # Iorap
 iorapd.perfetto.enable=true
 iorapd.readahead.enable=true
+
+# Log
+persist.log.tag.GED=S
+persist.log.tag.hwcomposer=S
+persist.log.tag.libnfc_nci=S
+persist.log.tag.libPowerHal=S
+persist.log.tag.mTEE=S
+persist.log.tag.mtkpower@impl=S
