@@ -22,6 +22,7 @@
         <library name="loudness_enhancer" path="libldnhncr.so"/>
         <library name="dynamics_processing" path="libdynproc.so"/>
         <library name="pre_processing" path="libaudiopreprocessing.so"/>
+		<library name="dap" path="libswdap.so"/>
     </libraries>
 
     <!-- list of effects to load.
@@ -62,6 +63,7 @@
         <effect name="aec" library="pre_processing" uuid="9f35ed76-0b66-4330-8f79-e39ca266dc7c"/>
         <effect name="ns" library="pre_processing" uuid="300abe9f-dfc5-4340-9c4b-79ef1be4e651"/>
         <effect name="agc" library="pre_processing" uuid="3387eb70-9896-4338-90f5-b2de883864c9"/>
+		<effect name="dap" library="dap" uuid="9d4921da-8225-4f29-aefa-39537a04bcaa"/>
     </effects>
 
     <!-- Audio pre processor configurations.
