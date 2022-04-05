@@ -448,4 +448,12 @@ ro.hardware.wlan.dbs=0
 persist.dbg.volte_avail_ovr=1
 persist.dbg.vt_avail_ovr=1
 persist.dbg.wfc_avail_ovr=1
+ro.lmk.critical_upgrade=true
+ro.lmk.upgrade_pressure=60
+ro.lmk.downgrade_pressure=80
+ro.lmk.use_minfree_levels=true
+ro.lmk.kill_heaviest_task=true
+ro.lmk.extra_medium=400
+ro.lmk.extra_critical=400
+ro.lmk.low=1000
 import /vendor/build_${ro.boot.radio.multisim.config}_vendor.prop
