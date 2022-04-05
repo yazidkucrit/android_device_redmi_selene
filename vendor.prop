@@ -456,4 +456,5 @@ ro.lmk.kill_heaviest_task=true
 ro.lmk.extra_medium=400
 ro.lmk.extra_critical=400
 ro.lmk.low=1000
+media.stagefright.thumbnail.prefer_hw_codecs=true
 import /vendor/build_${ro.boot.radio.multisim.config}_vendor.prop
