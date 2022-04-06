@@ -637,7 +637,7 @@
         </interface>
     </hal>
 	<hal format="hidl">
-        <name>vendor.dolby.hardware.dms</name>
+	    <name>vendor.dolby.hardware.dms</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
