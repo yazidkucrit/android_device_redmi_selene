@@ -476,6 +476,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
     WifiOverlay \
+    CarrierConfigOverlay \
     TetheringConfigOverlay \
     android.hardware.wifi@1.0 \
     android.hardware.wifi@1.0.vendor \
