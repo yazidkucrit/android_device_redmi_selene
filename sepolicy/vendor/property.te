@@ -3,6 +3,3 @@ vendor_restricted_prop(vendor_fp_prop)
 type persist_recovery_update_prop, property_type;
 vendor_internal_prop(vendor_mi_camera_prop)
 vendor_internal_prop(vendor_usb_config_prop)
-
-# Dolby
-type vendor_dolby_loglevel_prop, property_type;
