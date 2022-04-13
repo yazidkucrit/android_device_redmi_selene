@@ -5,6 +5,8 @@ ro.camera.sound.forced=0
 ro.config.vc_call_vol_steps=6
 
 # Bluetooth
+persist.vendor.btstack.enable.lpa=true
+persist.vendor.btstack.enable.twsplus=true
 persist.bluetooth.bluetooth_audio_hal.disabled=true
 
 # Brand
