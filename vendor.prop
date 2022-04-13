@@ -457,4 +457,5 @@ ro.lmk.extra_medium=400
 ro.lmk.extra_critical=400
 ro.lmk.low=1000
 media.stagefright.thumbnail.prefer_hw_codecs=true
+sys.fflag.override.settings_seamless_transfer=tru
 import /vendor/build_${ro.boot.radio.multisim.config}_vendor.prop
