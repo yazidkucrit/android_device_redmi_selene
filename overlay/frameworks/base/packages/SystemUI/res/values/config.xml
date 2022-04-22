@@ -29,7 +29,10 @@
     <!-- FPSInfoService FPS node file path -->
     <string name="config_fpsInfoSysNode" translatable="false">/sys/module/primary_display/parameters/display_framerate_main</string>
 	
-	<!-- If true, recorder will use AVCLevel42 for encoding-->
+    <!-- If true, recorder will use AVCLevel42 for encoding-->
     <bool name="config_screenrecord_codec_profile_avc42">true</bool>
+	
+    <!-- Smart replies in notifications: Whether we disable the feature unless the app targets P -->
+    <bool name="config_smart_replies_in_notifications_requires_targeting_p">false</bool>
     
 </resources>
