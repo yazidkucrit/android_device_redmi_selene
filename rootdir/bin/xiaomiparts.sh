@@ -77,6 +77,23 @@ if [ "$tcprofileold" != "$tcprofile" ]; then
 	tcprofileold=$tcprofile
 fi
 
+## V-Sync Disabler
+vsyncdis="$(getprop persist.xp.vsync.disabled)"
+if [ "$vsyncdisold" != "$vsyncdis" ]; then
+  case $vsyncdis in
+  0)# Off
+  setprop ro.surface_flinger.running_without_sync_framework 1
+  ;;
+  1)# On
+  setprop ro.surface_flinger.running_without_sync_framework 0
+  ;;
+  *)# First boot params
+  setprop ro.surface_flinger.running_without_sync_framework 1
+  ;;
+  esac
+	vsyncdisold=$vsyncdis
+fi
+
 sleep 3
 
 done

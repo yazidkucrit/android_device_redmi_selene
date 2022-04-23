@@ -53,6 +53,9 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String PREF_TCP = "tcpcongestion";
     public static final String TCP_SYSTEM_PROPERTY = "persist.tcp.profile";
     
+	public static final String PREF_DISABLE_VSYNC = "vsync";
+    public static final String VSYNC_SYSTEM_PROPERTY = "persist.xp.vsync.disabled";
+	
     private VibratorStrengthPreference mVibratorStrength;
     private Preference mAmbientPref;
     private SecureSettingSwitchPreference mEnableDirac;
@@ -63,6 +66,8 @@ public class DeviceSettings extends PreferenceFragment implements
 
     private SecureSettingListPreference mTCP;
     
+	private SecureSettingListPreference mDisableVSYNC;
+	
     private static Context mContext;
 
     @Override
@@ -122,6 +127,12 @@ public class DeviceSettings extends PreferenceFragment implements
 	mTCP.setValue(FileUtils.getStringProp(TCP_SYSTEM_PROPERTY, "0"));
 	mTCP.setSummary(mTCP.getEntry());
 	mTCP.setOnPreferenceChangeListener(this);
+	
+	// VSYNC Disabler
+    mDisableVSYNC = (SecureSettingListPreference) findPreference(PREF_DISABLE_VSYNC);
+    mDisableVSYNC.setValue(FileUtils.getStringProp(VSYNC_SYSTEM_PROPERTY, "0"));
+    mDisableVSYNC.setSummary(mDisableVSYNC.getEntry());
+    mDisableVSYNC.setOnPreferenceChangeListener(this);
 
 	//Ambient gestures
 	mAmbientPref = findPreference("ambient_display_gestures");
@@ -180,7 +191,13 @@ public class DeviceSettings extends PreferenceFragment implements
                 FileUtils.setStringProp(TCP_SYSTEM_PROPERTY, (String) value);
                 break;
                
-            case PREF_KEY_FPS_INFO:
+            case PREF_DISABLE_VSYNC:
+                mDisableVSYNC.setValue((String) value);
+                mDisableVSYNC.setSummary(mDisableVSYNC.getEntry());
+                FileUtils.setStringProp(VSYNC_SYSTEM_PROPERTY, (String) value);
+                break;
+				
+			case PREF_KEY_FPS_INFO:
                 boolean enabled = (Boolean) value;
                 Intent fpsinfo = new Intent(this.getContext(), FPSInfoService.class);
                 if (enabled) {
