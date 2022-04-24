@@ -128,6 +128,11 @@
     <string name="vsync_dialogTitle">Вертикальная синхронизация (нужна перезагрузка)</string>
     <string name="vsync_disabled">Отключено</string>
     <string name="vsync_enabled">Включено</string>
+	
+	<!-- latch_unsignaled -->
+    <string name="latch_unsignaled_title">debug.sf.latch_unsignaled</string>
+    <string name="latch_unsignaled_summary">Влияет на отрисовку наложений</string>
+    <string name="latch_unsignaled_dialogTitle">Влияет на отрисовку наложений</string>
 
     <!-- Ambient gesture haptic feedback -->
     <string name="ambient_gesture_haptic_feedback">Виброотдача</string>

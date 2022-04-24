@@ -56,6 +56,9 @@ public class DeviceSettings extends PreferenceFragment implements
 	public static final String PREF_DISABLE_VSYNC = "vsync";
     public static final String VSYNC_SYSTEM_PROPERTY = "persist.xp.vsync.disabled";
 	
+    public static final String PREF_LATCH_UNSIGNALED = "latch_unsignaled";
+    public static final String LATCH_UNSIGNALED_SYSTEM_PROPERTY = "persist.xp.latch_unsignaled";
+	
     private VibratorStrengthPreference mVibratorStrength;
     private Preference mAmbientPref;
     private SecureSettingSwitchPreference mEnableDirac;
@@ -67,6 +70,8 @@ public class DeviceSettings extends PreferenceFragment implements
     private SecureSettingListPreference mTCP;
     
 	private SecureSettingListPreference mDisableVSYNC;
+	
+	private SecureSettingSwitchPreference mLatchUnsignaled;
 	
     private static Context mContext;
 
@@ -133,6 +138,11 @@ public class DeviceSettings extends PreferenceFragment implements
     mDisableVSYNC.setValue(FileUtils.getStringProp(VSYNC_SYSTEM_PROPERTY, "0"));
     mDisableVSYNC.setSummary(mDisableVSYNC.getEntry());
     mDisableVSYNC.setOnPreferenceChangeListener(this);
+	
+	// latch_unsignaled
+    mLatchUnsignaled = (SecureSettingSwitchPreference) findPreference(PREF_LATCH_UNSIGNALED);
+    mLatchUnsignaled.setChecked(FileUtils.getProp(LATCH_UNSIGNALED_SYSTEM_PROPERTY, false));
+    mLatchUnsignaled.setOnPreferenceChangeListener(this);
 
 	//Ambient gestures
 	mAmbientPref = findPreference("ambient_display_gestures");
@@ -195,6 +205,10 @@ public class DeviceSettings extends PreferenceFragment implements
                 mDisableVSYNC.setValue((String) value);
                 mDisableVSYNC.setSummary(mDisableVSYNC.getEntry());
                 FileUtils.setStringProp(VSYNC_SYSTEM_PROPERTY, (String) value);
+                break;
+				
+			case PREF_LATCH_UNSIGNALED:
+                FileUtils.setProp(LATCH_UNSIGNALED_SYSTEM_PROPERTY, (Boolean) value);
                 break;
 				
 			case PREF_KEY_FPS_INFO:

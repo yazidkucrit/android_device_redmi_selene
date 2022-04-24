@@ -6,6 +6,8 @@ sleep 10
 # initial service variables with value more than available
 sprofileold=10
 tcprofileold=10
+vsyncdisold=10
+latch_unsignaled_old=10
 
 # loop, run every 3 seconds
 while true
@@ -92,6 +94,26 @@ if [ "$vsyncdisold" != "$vsyncdis" ]; then
   ;;
   esac
 	vsyncdisold=$vsyncdis
+fi
+
+## debug.sf.latch_unsignaled
+latch_unsignaled="$(getprop persist.xp.latch_unsignaled)"
+if [ "$latch_unsignaled_old" != "$latch_unsignaled" ]; then
+  case $latch_unsignaled in
+  0)# Off
+  setprop vendor.debug.sf.latch_unsignaled 0
+  setprop debug.sf.latch_unsignaled 0
+  ;;
+  1)# On
+  setprop vendor.debug.sf.latch_unsignaled 1
+  setprop debug.sf.latch_unsignaled 1
+  ;;
+  *)# First boot params
+  setprop vendor.debug.sf.latch_unsignaled 1
+  setprop debug.sf.latch_unsignaled 1
+  ;;
+  esac
+	latch_unsignaled_old=$latch_unsignaled
 fi
 
 sleep 3
