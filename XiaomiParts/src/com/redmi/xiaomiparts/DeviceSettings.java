@@ -62,6 +62,9 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String PREF_LATCH_UNSIGNALED = "latch_unsignaled";
     public static final String LATCH_UNSIGNALED_SYSTEM_PROPERTY = "persist.xp.latch_unsignaled";
 	
+    public static final String PREF_HW_OVERLAYS = "hw_overlays";
+    public static final String HW_OVERLAYS_SYSTEM_PROPERTY = "persist.xp.hw_overlays";
+	
     private VibratorStrengthPreference mVibratorStrength;
     private Preference mAmbientPref;
     private SecureSettingSwitchPreference mEnableDirac;
@@ -77,6 +80,8 @@ public class DeviceSettings extends PreferenceFragment implements
 	private SecureSettingListPreference mDisableVSYNC;
 	
 	private SecureSettingSwitchPreference mLatchUnsignaled;
+	
+	private SecureSettingSwitchPreference mHwOverlays;
 	
     private static Context mContext;
 
@@ -155,7 +160,12 @@ public class DeviceSettings extends PreferenceFragment implements
         mLatchUnsignaled.setChecked(FileUtils.getProp(LATCH_UNSIGNALED_SYSTEM_PROPERTY, false));
         mLatchUnsignaled.setOnPreferenceChangeListener(this);
 
-	    //Ambient gestures
+	    // HW overlays
+        mHwOverlays = (SecureSettingSwitchPreference) findPreference(PREF_HW_OVERLAYS);
+        mHwOverlays.setChecked(FileUtils.getProp(HW_OVERLAYS_SYSTEM_PROPERTY, false));
+        mHwOverlays.setOnPreferenceChangeListener(this);
+	
+		//Ambient gestures
 	    mAmbientPref = findPreference("ambient_display_gestures");
         mAmbientPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
@@ -226,6 +236,10 @@ public class DeviceSettings extends PreferenceFragment implements
 				
 			case PREF_LATCH_UNSIGNALED:
                 FileUtils.setProp(LATCH_UNSIGNALED_SYSTEM_PROPERTY, (Boolean) value);
+                break;
+				
+			case PREF_HW_OVERLAYS:
+                FileUtils.setProp(HW_OVERLAYS_SYSTEM_PROPERTY, (Boolean) value);
                 break;
 				
 			case PREF_KEY_FPS_INFO:
