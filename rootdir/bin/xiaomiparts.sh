@@ -74,6 +74,9 @@ if [ "$tcprofileold" != "$tcprofile" ]; then
   5)# htcp
   /system/bin/echo -n htcp > /proc/sys/net/ipv4/tcp_congestion_control
   ;;
+  6)# bbr
+  /system/bin/echo -n bbr > /proc/sys/net/ipv4/tcp_congestion_control
+  ;;
   *)# First boot params (westwood)
   /system/bin/echo -n westwood > /proc/sys/net/ipv4/tcp_congestion_control
   ;;
