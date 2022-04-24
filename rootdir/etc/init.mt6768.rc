@@ -1236,3 +1236,8 @@ on property:persist.sys.MT6768.dt2w=0
 
 on property:persist.sys.MT6768.dt2w=1
     exec - system input -- /vendor/bin/dt2w_event 5
+
+on property:sys.boot_completed=1
+     # Restrict permissions to socket file
+     # to hide Magisk & co.
+     chmod 440 /proc/net/unix
