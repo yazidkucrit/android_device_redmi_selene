@@ -116,6 +116,25 @@ if [ "$latch_unsignaled_old" != "$latch_unsignaled" ]; then
 	latch_unsignaled_old=$latch_unsignaled
 fi
 
+## Codecs priority
+codecs="$(getprop persist.xp.hw_codecs)"
+if [ "$codecs_old" != "$codecs" ]; then
+  case $codecs in
+  0)# MTK HW
+  setprop debug.stagefright.omx_default_rank 0
+  killall mediaserver
+  ;;
+  1)# Google OMX
+  setprop debug.stagefright.omx_default_rank 1000
+  killall mediaserver
+  ;;
+  *)# First boot params
+  setprop debug.stagefright.omx_default_rank 0
+  ;;
+  esac
+	codecs_old=$codecs
+fi
+
 sleep 3
 
 done

@@ -49,6 +49,9 @@ public class DeviceSettings extends PreferenceFragment implements
     public static final String SPECTRUM_SYSTEM_PROPERTY = "persist.spectrum.profile";
     
     public static final String PREF_KEY_FPS_INFO = "fps_info";
+	
+    public static final String PREF_HWCODECS = "codecs";
+    public static final String HWCODECS_SYSTEM_PROPERTY = "persist.xp.hw_codecs";
 
     public static final String PREF_TCP = "tcpcongestion";
     public static final String TCP_SYSTEM_PROPERTY = "persist.tcp.profile";
@@ -67,7 +70,9 @@ public class DeviceSettings extends PreferenceFragment implements
     
     private SecureSettingListPreference mSPECTRUM;
 
-    private SecureSettingListPreference mTCP;
+    private SecureSettingListPreference mHwCodecs;
+	
+	private SecureSettingListPreference mTCP;
     
 	private SecureSettingListPreference mDisableVSYNC;
 	
@@ -93,14 +98,14 @@ public class DeviceSettings extends PreferenceFragment implements
                 enhancerEnabled = false;
             }
         }
-	// Dirac
+	    // Dirac
         mEnableDirac = (SecureSettingSwitchPreference) findPreference(PREF_ENABLE_DIRAC);
         mEnableDirac.setOnPreferenceChangeListener(this);
         mEnableDirac.setChecked(enhancerEnabled);
-	// HeadSet
+	    // HeadSet
         mHeadsetType = (SecureSettingListPreference) findPreference(PREF_HEADSET);
         mHeadsetType.setOnPreferenceChangeListener(this);
-	// PreSet
+	    // PreSet
         mPreset = (SecureSettingListPreference) findPreference(PREF_PRESET);
         mPreset.setOnPreferenceChangeListener(this);
         
@@ -127,25 +132,31 @@ public class DeviceSettings extends PreferenceFragment implements
         mSPECTRUM.setSummary(mSPECTRUM.getEntry());
         mSPECTRUM.setOnPreferenceChangeListener(this);
 
-	// TCP
-	mTCP = (SecureSettingListPreference) findPreference(PREF_TCP);
-	mTCP.setValue(FileUtils.getStringProp(TCP_SYSTEM_PROPERTY, "0"));
-	mTCP.setSummary(mTCP.getEntry());
-	mTCP.setOnPreferenceChangeListener(this);
+	    // Codecs
+        mHwCodecs = (SecureSettingListPreference) findPreference(PREF_HWCODECS);
+        mHwCodecs.setValue(FileUtils.getStringProp(HWCODECS_SYSTEM_PROPERTY, "0"));
+        mHwCodecs.setSummary(mHwCodecs.getEntry());
+        mHwCodecs.setOnPreferenceChangeListener(this);
 	
-	// VSYNC Disabler
-    mDisableVSYNC = (SecureSettingListPreference) findPreference(PREF_DISABLE_VSYNC);
-    mDisableVSYNC.setValue(FileUtils.getStringProp(VSYNC_SYSTEM_PROPERTY, "0"));
-    mDisableVSYNC.setSummary(mDisableVSYNC.getEntry());
-    mDisableVSYNC.setOnPreferenceChangeListener(this);
+	    // TCP
+	    mTCP = (SecureSettingListPreference) findPreference(PREF_TCP);
+	    mTCP.setValue(FileUtils.getStringProp(TCP_SYSTEM_PROPERTY, "0"));
+	    mTCP.setSummary(mTCP.getEntry());
+	    mTCP.setOnPreferenceChangeListener(this);
 	
-	// latch_unsignaled
-    mLatchUnsignaled = (SecureSettingSwitchPreference) findPreference(PREF_LATCH_UNSIGNALED);
-    mLatchUnsignaled.setChecked(FileUtils.getProp(LATCH_UNSIGNALED_SYSTEM_PROPERTY, false));
-    mLatchUnsignaled.setOnPreferenceChangeListener(this);
+	    // VSYNC Disabler
+        mDisableVSYNC = (SecureSettingListPreference) findPreference(PREF_DISABLE_VSYNC);
+        mDisableVSYNC.setValue(FileUtils.getStringProp(VSYNC_SYSTEM_PROPERTY, "0"));
+        mDisableVSYNC.setSummary(mDisableVSYNC.getEntry());
+        mDisableVSYNC.setOnPreferenceChangeListener(this);
+	
+	    // latch_unsignaled
+        mLatchUnsignaled = (SecureSettingSwitchPreference) findPreference(PREF_LATCH_UNSIGNALED);
+        mLatchUnsignaled.setChecked(FileUtils.getProp(LATCH_UNSIGNALED_SYSTEM_PROPERTY, false));
+        mLatchUnsignaled.setOnPreferenceChangeListener(this);
 
-	//Ambient gestures
-	mAmbientPref = findPreference("ambient_display_gestures");
+	    //Ambient gestures
+	    mAmbientPref = findPreference("ambient_display_gestures");
         mAmbientPref.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
             @Override
             public boolean onPreferenceClick(Preference preference) {
@@ -195,7 +206,13 @@ public class DeviceSettings extends PreferenceFragment implements
                 FileUtils.setStringProp(SPECTRUM_SYSTEM_PROPERTY, (String) value);
                 break;
             
-            case PREF_TCP:
+            case PREF_HWCODECS:
+                mHwCodecs.setValue((String) value);
+                mHwCodecs.setSummary(mHwCodecs.getEntry());
+                FileUtils.setStringProp(HWCODECS_SYSTEM_PROPERTY, (String) value);
+                break;
+				
+			case PREF_TCP:
                 mTCP.setValue((String) value);
                 mTCP.setSummary(mTCP.getEntry());
                 FileUtils.setStringProp(TCP_SYSTEM_PROPERTY, (String) value);
