@@ -55,6 +55,9 @@ public class DeviceSettings extends PreferenceFragment implements
 
     public static final String PREF_TCP = "tcpcongestion";
     public static final String TCP_SYSTEM_PROPERTY = "persist.tcp.profile";
+	
+	public static final String PREF_WIFI80 = "wifi80";
+    public static final String WIFI80_SYSTEM_PROPERTY = "persist.xp.wifi80";
     
 	public static final String PREF_DISABLE_VSYNC = "vsync";
     public static final String VSYNC_SYSTEM_PROPERTY = "persist.xp.vsync.disabled";
@@ -76,6 +79,8 @@ public class DeviceSettings extends PreferenceFragment implements
     private SecureSettingListPreference mHwCodecs;
 	
 	private SecureSettingListPreference mTCP;
+	
+	private SecureSettingListPreference mWiFi80;
     
 	private SecureSettingListPreference mDisableVSYNC;
 	
@@ -149,7 +154,13 @@ public class DeviceSettings extends PreferenceFragment implements
 	    mTCP.setSummary(mTCP.getEntry());
 	    mTCP.setOnPreferenceChangeListener(this);
 	
-	    // VSYNC Disabler
+	    // WiFi 80
+	    mWiFi80 = (SecureSettingListPreference) findPreference(PREF_WIFI80);
+	    mWiFi80.setValue(FileUtils.getStringProp(WIFI80_SYSTEM_PROPERTY, "0"));
+	    mWiFi80.setSummary(mWiFi80.getEntry());
+	    mWiFi80.setOnPreferenceChangeListener(this);
+	
+		// VSYNC Disabler
         mDisableVSYNC = (SecureSettingListPreference) findPreference(PREF_DISABLE_VSYNC);
         mDisableVSYNC.setValue(FileUtils.getStringProp(VSYNC_SYSTEM_PROPERTY, "0"));
         mDisableVSYNC.setSummary(mDisableVSYNC.getEntry());
@@ -228,7 +239,13 @@ public class DeviceSettings extends PreferenceFragment implements
                 FileUtils.setStringProp(TCP_SYSTEM_PROPERTY, (String) value);
                 break;
                
-            case PREF_DISABLE_VSYNC:
+            case PREF_WIFI80:
+                mWiFi80.setValue((String) value);
+                mWiFi80.setSummary(mWiFi80.getEntry());
+                FileUtils.setStringProp(WIFI80_SYSTEM_PROPERTY, (String) value);
+                break;
+				
+			case PREF_DISABLE_VSYNC:
                 mDisableVSYNC.setValue((String) value);
                 mDisableVSYNC.setSummary(mDisableVSYNC.getEntry());
                 FileUtils.setStringProp(VSYNC_SYSTEM_PROPERTY, (String) value);
