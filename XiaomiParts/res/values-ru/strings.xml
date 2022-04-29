@@ -14,7 +14,7 @@
      limitations under the License.
 -->
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="advanced_settings">BegoniaParts</string>
+    <string name="advanced_settings">XiaomiParts</string>
     <string name="advanced_settings_summary">Особые настройки устройства</string>
 
     <string name="display_title">Дисплей</string>
