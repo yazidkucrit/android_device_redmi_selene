@@ -19,6 +19,12 @@
   },
   {
 	"remote": "github",
+	"repository": "Luquidtester/vendor_dirac",
+	"target_path": "vendor/dirac",
+	"branch": "twelve"
+  },
+  {
+	"remote": "github",
 	"repository": "Luquidtester/kernel_xiaomi_selene",
 	"target_path": "kernel/xiaomi/selene",
 	"branch": "main"
