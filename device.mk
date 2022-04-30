@@ -150,7 +150,9 @@ PRODUCT_PACKAGES += \
     android.hardware.memtrack@1.0-impl \
     android.hardware.memtrack@1.0-service \
     libdrm.vendor \
-    libvulkan
+    libvulkan \
+    libhwc2on1adapter \
+    libhwc2onfbadapter
 
 # DRM
 PRODUCT_PACKAGES += \
